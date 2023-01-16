@@ -5,10 +5,20 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { CoursesComponent } from './courses/courses.component';
+import { DepartmentsComponent } from './departments/departments.component';
+import { FacultyComponent } from './faculty/faculty.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentCoursesComponent,
+    CoursesComponent,
+    DepartmentsComponent,
+    FacultyComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
