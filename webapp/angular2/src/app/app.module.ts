@@ -11,7 +11,6 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { StudentsComponent } from './students/students.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,11 +28,6 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: AppComponent },
-      { path: 'courses', component: CoursesComponent },
-      { path: 'students', component: StudentsComponent }
-    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
