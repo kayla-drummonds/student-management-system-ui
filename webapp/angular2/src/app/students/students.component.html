@@ -23,7 +23,7 @@
           <!-- Navbar tabs -->
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" th:href="@{/home}">Home</a>
+              <a class="nav-link" data-toggle="tab" [routerLink]="['']">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" th:href="@{/courses/all}"
@@ -49,7 +49,7 @@
               >
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" th:href="@{/students}"
+                  <a class="dropdown-item" [routerLink]="['/students/v1']"
                     >All Students</a
                   >
                 </li>
@@ -78,7 +78,11 @@
           <h1>All Students</h1>
         </div>
         <div>
-          <form class="form-horizontal" (ngSubmit)="onSubmit(studentsearch)">
+          <form
+            class="form-horizontal"
+            (ngSubmit)="onSubmit(studentsearch)"
+            [formGroup]="studentsearch"
+          >
             <div class="row">
               <div class="form-group row col-4">
                 <input

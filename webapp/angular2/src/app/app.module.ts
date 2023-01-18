@@ -1,31 +1,39 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { StudentsComponent } from './students/students.component';
+import { HomeComponent } from './home/home.component';
+import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
     StudentCoursesComponent,
     CoursesComponent,
     DepartmentsComponent,
     FacultyComponent,
-    StudentsComponent
+    StudentsComponent,
+    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      { path: '', component: AppComponent },
+      { path: 'courses', component: CoursesComponent },
+      { path: 'students', component: StudentsComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

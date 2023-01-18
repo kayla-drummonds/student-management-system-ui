@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { HttpResponse, HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map, catchError } from "rxjs";
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class StudentsComponent implements OnInit {
+
+export class AppComponent implements OnInit {
+
   constructor(private http: HttpClient) {
 
   }
@@ -100,4 +102,3 @@ export class StudentCourseRequest {
   }
 
 }
-
