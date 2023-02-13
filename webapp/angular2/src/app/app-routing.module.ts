@@ -5,7 +5,6 @@ import { CoursesComponent } from './courses/courses.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { StudentsComponent } from './students/students.component';
-import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -14,9 +13,8 @@ const routes: Routes = [
   { path: 'departments', component: DepartmentsComponent },
   { path: 'faculty', component: FacultyComponent },
   { path: 'students', component: StudentsComponent },
-  { path: 'home', component: HomeComponent },
   { path: 'app', component: AppComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/courses', pathMatch: 'full' }
 ];
 
 @NgModule({

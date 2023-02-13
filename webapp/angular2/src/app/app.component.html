@@ -19,11 +19,6 @@
           <!-- Navbar tabs -->
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" th:href="@{/home}"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
               <a class="nav-link" data-toggle="tab" th:href="@{/logout}"
                 >Log Out</a
               >
@@ -36,20 +31,7 @@
     <br />
     <div class="tab-content">
       <div id="home" class="container tab-pane active">
-        <h2 class="display-2">Welcome! Choose one of these options.</h2>
-        <br />
-        <p class="h4">
-          <a [routerLink]="['/courses']">All Courses</a>
-        </p>
-        <br />
-        <h4><a th:href="@{/departments}">All Departments</a></h4>
-        <br />
-        <h4><a [routerLink]="['/students']">All students</a></h4>
-        <br />
-        <h4><a th:href="@{/studentcourses/new}">Add new student course</a></h4>
-        <br />
-        <h4><a th:href="@{/registration}"> Register new student</a></h4>
-        <br />
+        <router-outlet></router-outlet>
       </div>
     </div>
 

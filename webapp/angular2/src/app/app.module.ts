@@ -9,7 +9,6 @@ import { CoursesComponent } from './courses/courses.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { StudentsComponent } from './students/students.component';
-import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { AppComponent } from './app.component';
     DepartmentsComponent,
     FacultyComponent,
     StudentsComponent,
-    HomeComponent,
     AppComponent
   ],
   imports: [
