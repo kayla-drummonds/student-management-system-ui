@@ -4,12 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { StudentCoursesComponent } from './student-courses/student-courses.component';
-import { FacultyComponent } from './faculty/faculty.component';
 import { StudentsComponent } from './students/students.component';
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { FacultyComponent } from './components/faculty/faculty.component';
+import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
 
 @NgModule({
   declarations: [
