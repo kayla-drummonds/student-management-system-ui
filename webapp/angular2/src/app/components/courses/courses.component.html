@@ -2,21 +2,17 @@
 <div>
   <h1>List of Courses</h1>
 </div>
-<div *ngIf="courses">
-  <table class="table table-hover table-bordered">
-    <thead class="table-info">
-      <tr>
-        <th>Course ID</th>
-        <th>Course Name</th>
-        <th>Department</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let course of courses">
-        <td>{{ course.id }}</td>
-        <td>{{ course.name }}</td>
-        <td>{{ course.department.name }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-hover table-bordered">
+  <thead class="table-info">
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.id }}</td>
+      <td>{{ course.name }}</td>
+    </tr>
+  </tbody>
+</table>

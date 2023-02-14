@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { StudentService } from 'src/app/services/student.service';
+import { Student } from 'src/app/common/student';
 
 @Component({
   selector: 'app-students',
@@ -9,14 +11,14 @@ import { Observable } from "rxjs";
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
-  constructor(private http: HttpClient) {
+  constructor(private studentService: StudentService, private http: HttpClient) {
 
   }
 
   private baseUrl: string = 'http://localhost:8006/students/v1';
   public submitted: boolean = false;
   studentsearch!: FormGroup;
-  students!: Student[];
+  students: Student[] = [];
   currentCourseVal!: number;
   currentProgressVal!: number;
 
@@ -59,29 +61,31 @@ export class StudentsComponent implements OnInit {
     let customOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
-    this.http.post(this.baseUrl + '/students/v1', bodyString, customOptions).subscribe(
+    this.http.post(this.baseUrl, bodyString, customOptions).subscribe(
       (sc) => console.log(sc)
     );
   }
 
   getAll(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.baseUrl + '/students/v1?course=' + this.currentCourseVal + '&progress=' + this.currentProgressVal);
+    return this.http.get<Student[]>(`${this.baseUrl}?course=${this.currentCourseVal}&progress=${this.currentProgressVal}`);
   }
 
+}
+
+export class StudentRequest {
+
+  constructor(public id: number, public name: string, public username: string, public email: string, public password: string) {
+    this.id = id;
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
 }
 
 export interface StudentSearch {
   course: string;
   progress: number;
-}
-
-export interface Student {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  links: string;
 }
 
 export class StudentCourseRequest {
