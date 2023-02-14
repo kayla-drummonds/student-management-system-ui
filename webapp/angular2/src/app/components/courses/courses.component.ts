@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -8,18 +10,51 @@ import { Observable } from 'rxjs';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  constructor(private http: HttpClient) {
 
-  }
-  private baseUrl: string = 'http://localhost:8006/api';
-  courses!: Course[];
+  courses: Course[] = [];
+  currentDepartmentId: number = 1;
+  previousDepartmentId: number = 1;
+  thePageNumber: number = 1;
+  thePageSize: number = 10;
+  theTotalElements: number = 0;
+
+  constructor(private courseService: CourseService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.route.paramMap.subscribe(
+      () => {
+        this.listCourses();
+      }
+    )
   }
 
-  getAll(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.baseUrl + '/courses/v1');
+  listCourses() {
+    this.handleListCourses();
+  }
+
+  handleListCourses() {
+    const hasDepartmentId: boolean = this.route.snapshot.paramMap.has('id');
+
+    if (hasDepartmentId) {
+      this.currentDepartmentId = +this.route.snapshot.paramMap.get('id')!;
+    } else {
+      this.currentDepartmentId = 1;
+    }
+
+    if (this.previousDepartmentId != this.currentDepartmentId) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousDepartmentId = this.currentDepartmentId;
+
+    this.courseService.getCourseListPaginate(this.thePageNumber - 1, this.thePageSize, this.currentDepartmentId).subscribe(
+      (data) => {
+        this.courses = data._embedded.courses;
+        this.thePageNumber = data.page.number + 1;
+        this.thePageSize = data.page.size;
+        this.theTotalElements = data.page.totalElements;
+      }
+    );
   }
 
 }

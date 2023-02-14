@@ -13,7 +13,7 @@ export class StudentsComponent implements OnInit {
 
   }
 
-  private baseUrl: string = 'http://localhost:8006/api';
+  private baseUrl: string = 'http://localhost:8006/students/v1';
   public submitted: boolean = false;
   studentsearch!: FormGroup;
   students!: Student[];

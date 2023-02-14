@@ -1,0 +1,83 @@
+<div id="students" class="container tab-pane active text-center">
+  <div>
+    <h1>All Students</h1>
+  </div>
+  <div>
+    <form
+      class="form-horizontal"
+      (ngSubmit)="onSubmit(studentsearch)"
+      [formGroup]="studentsearch"
+    >
+      <div class="row">
+        <div class="form-group row col-4">
+          <input
+            type="number"
+            name="course"
+            class="form-control"
+            placeholder="Course ID"
+            formControlName="course"
+          />
+        </div>
+        <div class="form-group row col-4">
+          <input
+            type="number"
+            name="name"
+            class="form-control"
+            placeholder="Progress"
+            formControlName="progress"
+            min="0"
+            max="100"
+          />
+        </div>
+        <div class="col-4">
+          <button class="btn btn-primary" type="submit">Find Students</button>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="students">
+      <table class="table table-hover table-bordered">
+        <thead class="table-info">
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.username }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.password }}</td>
+            <td>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                (click)="addStudentCourse(student.id)"
+              >
+                Add Course
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                (click)="updateStudent(student.id)"
+              >
+                Update
+              </button>
+              <a
+                type="submit"
+                class="btn btn-danger"
+                (click)="deleteStudent(student.id)"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
