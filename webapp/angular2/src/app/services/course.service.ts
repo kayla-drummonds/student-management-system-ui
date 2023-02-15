@@ -18,6 +18,11 @@ export class CourseService {
     return this.http.get<GetResponseCourses>(searchUrl);
   }
 
+  getCourseList(theDepartmentId: number) {
+    const searchUrl = `${this.baseUrl}/search/findByDepartmentId?id=${theDepartmentId}`;
+    return this.getCourses(searchUrl);
+  }
+
   private getCourses(searchUrl: string): Observable<Course[]> {
     return this.http.get<GetResponseCourses>(searchUrl).pipe(
       map(response => response._embedded.courses)

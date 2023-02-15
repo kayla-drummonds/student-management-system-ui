@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Department } from 'src/app/common/department';
+import { CourseService } from 'src/app/services/course.service';
 import { DepartmentService } from 'src/app/services/department.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { DepartmentService } from 'src/app/services/department.service';
   templateUrl: './departments.component.html',
   styleUrls: ['./departments.component.css']
 })
-export class DepartmentsComponent {
+export class DepartmentsComponent implements OnInit {
   departments: Department[] = [];
 
   constructor(private departmentService: DepartmentService, private route: ActivatedRoute) { }
@@ -29,11 +30,4 @@ export class DepartmentsComponent {
     )
   }
 
-}
-
-export class DepartmentRequest {
-  constructor(public id: number, public name: string) {
-    this.id = id;
-    this.name = name;
-  }
 }
