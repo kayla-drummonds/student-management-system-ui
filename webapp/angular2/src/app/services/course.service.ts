@@ -23,6 +23,12 @@ export class CourseService {
     return this.getCourses(searchUrl);
   }
 
+  getAllCourses(): Observable<Course[]> {
+    return this.http.get<GetResponseCourses>(this.baseUrl).pipe(
+      map(response => response._embedded.courses)
+    );
+  }
+
   private getCourses(searchUrl: string): Observable<Course[]> {
     return this.http.get<GetResponseCourses>(searchUrl).pipe(
       map(response => response._embedded.courses)
